@@ -30,7 +30,7 @@ python manage.py runserver
 │   │   ├── routing.py
 │   │   ├── tests.py
 │   │   └── views.py
-│   ├── gato  # Configuration of the project
+│   ├── config  # Configuration of the project
 │   │   ├── settings.py
 │   │   ├── urls.py
 │   │   └── wsgi.py
