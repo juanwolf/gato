@@ -9,4 +9,4 @@ class ChannelConsumer(websockets.JsonWebsocketConsumer):
         return ["chat"]
 
     def receive(self, message, **kwargs):
-        self.send(message)
+        self.group_send(self.connection_groups()[0], message)
