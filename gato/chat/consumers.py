@@ -1,4 +1,5 @@
 from channels import Group
+import json
 
 
 def ws_add(message):
@@ -7,8 +8,13 @@ def ws_add(message):
 
 
 def ws_message(message):
+    print(message.content)
+    mes = json.loads(message.content['text'])
     Group("chat").send({
-        "text": "[user] %s" % message.content['text']
+        "text": "[%s] %s" % (
+            mes['username'],
+            mes['message']
+        )
     })
 
 
