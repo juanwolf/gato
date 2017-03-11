@@ -18,5 +18,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'', include('gatoui.urls'))
+    url(r'', include('gato_core.urls'))
 ]

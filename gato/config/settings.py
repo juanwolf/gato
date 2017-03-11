@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'channels',
-    'gatoui',
+    'gato_core',
 ]
 
 MIDDLEWARE = [
@@ -121,14 +121,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-##########
-#CHANNELS#
-##########
+############
+# CHANNELS #
+############
 
 # In settings.py
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "asgiref.inmemory.ChannelLayer",
-        "ROUTING": "chat.routing.channel_routing",
+        "ROUTING": "gato_core.routing.channel_routing",
     },
 }

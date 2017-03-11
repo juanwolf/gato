@@ -1,4 +1,4 @@
-from chat import consumers
+from . import consumers
 
 
 channel_routing = [

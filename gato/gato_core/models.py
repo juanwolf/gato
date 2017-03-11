@@ -1,4 +1,4 @@
-import timezone
+from datetime import datetime
 
 from django.db import models
 
@@ -8,12 +8,12 @@ class User(models.Model):
 
 
 class Room(models.Model):
-    name = models.CharField(length=50)
+    name = models.CharField(max_length=50)
     label = models.SlugField(unique=True)
 
 
 class Message(models.Model):
     room = models.ForeignKey(Room, related_name="messages")
-    user = models.CharField(length=20)
+    user = models.CharField(max_length=20)
     message = models.TextField()
-    timestamp = models.DateTimeField(default=timezone.now, db_index=True)
+    timestamp = models.DateTimeField(default=datetime.now(), db_index=True)
