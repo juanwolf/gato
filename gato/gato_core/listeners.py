@@ -1,12 +1,25 @@
 import logging as log
 
 
+class CategoryNotFound(Exception):
+    pass
+
+
 class EventListenerManager:
     event_listeners = {}
 
     @property
     def categories(self):
         return self.event_listeners.keys()
+
+    def get_event_listeners(self, category):
+        try:
+            return self.event_listeners
+        except KeyError:
+            raise CategoryNotFound(
+                "Unknown category %s. Did you register it before to use it? "
+                "Like eventlistenermanager.register('messages')?"
+            )
 
     def add_category(self, category):
         self.debug("Creating new event listener category %s" % category)
@@ -26,6 +39,7 @@ class EventListenerManager:
                 "Unknown category %s, not unregistering the event_listener" %
                 category
             )
+            return
         del self.event_listeners[event_listener.__class__.__name__]
 
 
